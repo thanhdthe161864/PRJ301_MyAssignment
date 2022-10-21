@@ -5,6 +5,7 @@
 
 package assignment.student;
 
+import dal.assignment.AttandanceDBContext;
 import dal.assignment.SessionDBContext;
 import dal.assignment.StudentDBContext;
 import dal.assignment.TimeSlotDBContext;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Date;
+import model.assignment.Attandance;
 import model.assignment.Session;
 import model.assignment.Student;
 import model.assignment.TimeSlot;
@@ -71,6 +73,10 @@ public class TimetableController extends HttpServlet {
         StudentDBContext stuDB = new StudentDBContext();
         Student student = stuDB.get(stdid);
         request.setAttribute("student", student);
+        
+        AttandanceDBContext attDB = new AttandanceDBContext();
+        ArrayList<Attandance> attandances = attDB.filter(stdid,from,to); 
+        request.setAttribute("attandances", attandances);
         
         request.getRequestDispatcher("../view/student/timetable.jsp").forward(request, response);
         
