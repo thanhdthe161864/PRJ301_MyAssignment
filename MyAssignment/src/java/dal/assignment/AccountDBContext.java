@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dal;
+package dal.assignment;
 
+import dal.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.assignment.Account;
+import model.assignment.Student;
 
 /**
  *
@@ -20,7 +22,7 @@ public class AccountDBContext extends DBContext<Account> {
 
     public Account get(String username, String password) {
         try {
-            String sql = "SELECT username,displayname FROM Account \n"
+            String sql = "SELECT stdid,username,displayname FROM Account\n"
                     + "WHERE username = ? AND [password] = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
@@ -29,6 +31,9 @@ public class AccountDBContext extends DBContext<Account> {
             if(rs.next())
             {
                 Account account = new Account();
+                Student student = new Student();
+                student.setId(rs.getInt("stdid"));
+                account.setStudent(student);
                 account.setUsername(username);
                 account.setDisplayname(rs.getString("displayname"));
                 return account;

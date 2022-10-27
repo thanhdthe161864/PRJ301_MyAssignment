@@ -5,7 +5,7 @@
 
 package controller.auth;
 
-import dal.AccountDBContext;
+import dal.assignment.AccountDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -57,7 +57,8 @@ public class LoginController extends HttpServlet {
         else
         {
             request.getSession().setAttribute("account", account);
-            response.getWriter().println("login successful!");
+            request.setAttribute("account", account);
+            request.getRequestDispatcher("view/auth/home.jsp").forward(request, response);
         }
 
     }

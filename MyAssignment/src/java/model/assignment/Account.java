@@ -12,6 +12,16 @@ public class Account {
     private String username;
     private String password;
     private String displayname;
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+    
 
     public String getUsername() {
         return username;
