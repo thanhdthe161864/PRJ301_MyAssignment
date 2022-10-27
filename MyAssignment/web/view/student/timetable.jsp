@@ -14,39 +14,44 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <table>
+            <tr><td><h1 style="background-color: orange" ><center>TIME TABLE</center></h1></td></tr>
+        </table>
+        </br>
         Student: <input type="text" readonly="readonly" value="${requestScope.student.name}"/>
         <form action="timetable" method="GET">
             <input type="hidden" name="stdid" value="${param.stdid}"/>
-            From: <input type="date" name="from" value="${requestScope.from}"/>
-            To: <input type="date" name="to" value="${requestScope.to}"/>
+            From : <input type="date" name="from" value="${requestScope.from}"/> </br>           
+            To : <input type="date" name="to" value="${requestScope.to}"/> </br>
             <input type="submit" value="View"/> 
         </form>
-        <table border="1px">
+        <table border="2px">
             <tr>
                 <td> </td>
                 <c:forEach items="${requestScope.dates}" var="d">
-                    <td>${d}<br/>${helper.getDayNameofWeek(d)}</td>
+                    <td style="background-color: yellow"><center>${d}<br/>${helper.getDayNameofWeek(d)}</center></td>
                     </c:forEach>
             </tr>
             <c:forEach items="${requestScope.slots}" var="slot">
                 <tr>
-                    <td>${slot.description}</td>
+                    <td style="background-color: yellow"><center>${slot.description}</center></td>
                     <c:forEach items="${requestScope.dates}" var="d">
                         <td>
                             <c:forEach items="${requestScope.attandances}" var="att">
                                 <c:if test="${helper.compare(att.session.date,d) eq 0 and (att.session.timeslot.id eq slot.id)}">
-                                    <a href="att?id=${att.session.id}">${att.session.group.name}-${att.session.lecturer.name}</a>
+                                    <a href="att?id=${att.session.id}"><center>${att.session.group.name}-${att.session.lecturer.name}</center></a>
                                     <br/>
-                                    ${att.session.room.name}
+                                    <center>
+                                        ${att.session.room.name}</center>
                                     <br/>
 
                                     <c:if test="${att.session.attandated}">
-                                        <c:if test = "${att.present}"><a>attended</a></c:if>
-                                        <c:if test = "${!att.present}"><a>absented</a></c:if>
+                                        <c:if test = "${att.present}"><a style="color: green"><center>attended</center></a></c:if>
+                                        <c:if test = "${!att.present}"><a style="color: red"><center>absented</center></a></c:if>
                                         
                                     </c:if>
                                     <c:if test="${!att.session.attandated}">
-                                        <a>not yet</a>
+                                        <a style = "color: blue"><center>not yet</center></a>
                                     </c:if>
                                 </c:if>
 

@@ -1,7 +1,5 @@
 <%-- 
-    Document   : login
-    Created on : Oct 17, 2022, 3:08:08 PM
-    Author     : sonnt
+    Author     : thanhdt
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
