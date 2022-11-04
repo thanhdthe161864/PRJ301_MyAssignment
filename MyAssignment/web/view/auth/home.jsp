@@ -12,7 +12,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="student/timetable?stdid=${requestScope.account.student.id}"><h1>Time Table</h1></a> </br></br>
+        <form acction ="timetable" method="get">
+            <h1>Hello ${sessionScope.account.displayname}</h1>
+            <a href=""><right>logout</right></a>
+            <input type ="hidden" name="stdid" value="${sessionScope.account.student.id}">
+        </form>
+            <c:if test="${sessionScope.account.isstudent}">
+                <a href="student/timetable?stdid=${sessionScope.account.student.id}"><h1>Time Table</h1></a> </br></br>
+            </c:if>
+            <c:if test="${!sessionScope.account.isstudent}">
+                
+            </c:if>
+                
         <a href="student/attendedreport?stdid=${requestScope.account.student.id}"><h1>Attended Report</h1></a>
     </body>
 </html>

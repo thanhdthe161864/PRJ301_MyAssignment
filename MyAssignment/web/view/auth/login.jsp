@@ -2,6 +2,7 @@
     Author     : thanhdt
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,10 +11,48 @@
         <title>JSP Page</title>
     </head>
     <body>
+
         <form action="login" method="POST">
-            Username: <input type="text" name="username" /> <br/>
-            Password: <input type="password" name="password" /> <br/>
-            <input type="submit" value="Login"/>
+            <table style="background-color: #99ffcc" >
+
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="username" /></td> 
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" /></td>
+                </tr>
+                <tr><td><input type="submit" value="Login" /></td></tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div style="color: red">${requestScope.ms}</div>
+                    </td>
+                </tr>
+            </table>
         </form>
+
+
+
     </body>
+    <style>
+        body{
+            position:relative;
+            background:white;
+            height:650px;
+            width:1325px;
+            margin:auto;
+        }
+        form{
+            position:absolute;
+            top:45%;
+            height:50px;
+            margin-top:-25px;
+            background:white;
+            padding:0 500px;
+            width: 0;
+            
+        }
+    </style>
 </html>

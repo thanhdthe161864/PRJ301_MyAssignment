@@ -52,13 +52,15 @@ public class LoginController extends HttpServlet {
         Account account = db.get(username, password);
         if(account==null)
         {
-            response.getWriter().println("login failed!");
+            request.setAttribute("ms", "Username or password are invalid!!");
+            request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
         }
         else
         {
             request.getSession().setAttribute("account", account);
             request.setAttribute("account", account);
             request.getRequestDispatcher("view/auth/home.jsp").forward(request, response);
+            
         }
 
     }
