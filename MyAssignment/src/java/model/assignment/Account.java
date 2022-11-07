@@ -13,7 +13,16 @@ public class Account {
     private String password;
     private String displayname;
     private Student student;
+    private Lecturer lecture;
     private boolean isstudent;
+
+    public Lecturer getLecture() {
+        return lecture;
+    }
+
+    public void setLecture(Lecturer lecture) {
+        this.lecture = lecture;
+    }
     
 
     public boolean isIsstudent() {

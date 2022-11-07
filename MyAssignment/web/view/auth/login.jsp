@@ -39,10 +39,10 @@
     <style>
         body{
             position:relative;
-            background:white;
             height:650px;
             width:1325px;
             margin:auto;
+            
         }
         form{
             position:absolute;
