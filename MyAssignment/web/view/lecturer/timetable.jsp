@@ -1,8 +1,3 @@
-<%-- 
-    Document   : timetable
-    Created on : Oct 15, 2022, 9:30:31 AM
-    Author     : Ngo Tung Son
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="helper" class="util.DateTimeHelper"/>
@@ -14,6 +9,9 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <table>
+            <tr><td><h1 style="background-color: orange" ><center>TIME TABLE</center></h1></td></tr>
+        </table>
         Lecturer: <input type="text" readonly="readonly" value="${requestScope.lecturer.name}"/>
         <form action="timetable" method="GET">
             <input type="hidden" name="lid" value="${param.lid}"/>
@@ -39,10 +37,10 @@
                                     <br/>
                                     ${ses.room.name}
                                     <c:if test="${ses.attandated}">
-                                        <img src="../img/male-icon.png" alt=""/>
+                                        <img src="../img/attend.jpg" alt=""/>
                                     </c:if>
                                     <c:if test="${!ses.attandated}">
-                                        <img src="../img/female-icon.png" alt=""/>
+                                        <img src="../img/not yet.jpg" alt=""/>
                                     </c:if>
                                 </c:if>
                                   
