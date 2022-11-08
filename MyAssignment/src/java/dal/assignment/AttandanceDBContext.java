@@ -36,7 +36,7 @@ public class AttandanceDBContext extends DBContext<Attandance> {
                     + "	,sub.subid,sub.subname\n"
                     + "	,r.rid,r.rname\n"
                     + "	,t.tid,t.[description]\n"
-                    + " ,std.stdid,std.stdname,at.present\n"
+                    + " ,std.stdid,std.stdname,at.present,at.aid\n"
                     + "from [Session] ses	INNER JOIN Lecturer l ON l.lid = ses.lid \n"
                     + "INNER JOIN [Group] g ON g.gid = ses.gid \n"
                     + "INNER JOIN [Subject] sub ON sub.subid = g.subid\n"

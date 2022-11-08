@@ -16,7 +16,7 @@
         <form action="timetable" method="GET">
             <input type="hidden" name="lid" value="${param.lid}"/>
             From: <input type="date" name="from" value="${requestScope.from}"/>
-            To: <input type="date" name="to" value="${requestScope.to}"/>
+            To: <input type="date" id="d2" name="to" value="${requestScope.to}" />
             <input type="submit" value="View"/> 
         </form>
         <table border="1px">
