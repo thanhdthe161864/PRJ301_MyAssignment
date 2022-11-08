@@ -46,23 +46,19 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Account ac = (Account) session.getAttribute("account");
-        boolean check = ac != null;
-        if (check) {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            AccountDBContext db = new AccountDBContext();
-            Account account = db.get(username, password);
-            if (account == null) {
-                request.setAttribute("ms", "Username or password are invalid!!");
-                request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
-            } else {
-                request.getSession().setAttribute("account", account);
 
-                request.getRequestDispatcher("view/auth/home.jsp").forward(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        AccountDBContext db = new AccountDBContext();
+        Account account = db.get(username, password);
+        if (account == null) {
+            request.setAttribute("ms", "Username or password are invalid!!");
+            request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
+        } else {
+            request.getSession().setAttribute("account", account);
 
-            }
+            request.getRequestDispatcher("view/auth/home.jsp").forward(request, response);
+
         }
 
     }
