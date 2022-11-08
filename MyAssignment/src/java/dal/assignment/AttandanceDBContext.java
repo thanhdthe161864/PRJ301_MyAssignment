@@ -36,7 +36,7 @@ public class AttandanceDBContext extends DBContext<Attandance> {
                     + "	,sub.subid,sub.subname\n"
                     + "	,r.rid,r.rname\n"
                     + "	,t.tid,t.[description]\n"
-                    + " ,std.stdid,std.stdname,at.present,at.aid\n"
+                    + " ,std.stdid,std.stdname,at.present\n"
                     + "from [Session] ses	INNER JOIN Lecturer l ON l.lid = ses.lid \n"
                     + "INNER JOIN [Group] g ON g.gid = ses.gid \n"
                     + "INNER JOIN [Subject] sub ON sub.subid = g.subid\n"
@@ -49,8 +49,6 @@ public class AttandanceDBContext extends DBContext<Attandance> {
                     + "std.stdid = ?\n"
                     + "AND ses.[date] >= ?\n"
                     + "AND ses.[date] <= ?\n";
-                    //+ "group by ses.sesid, ses.gid,ses.rid,ses.tid, ses.lid,\n"
-                    //+ "g.gid,sub.subname,r.rname,t.[description],ses.[date],std.stdname,at.present";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, stdid);
             stm.setDate(2, from);
@@ -70,9 +68,6 @@ public class AttandanceDBContext extends DBContext<Attandance> {
                 attand.setPresent(rs.getBoolean("present"));
                 
 
-//                s_g.setStdid(rs.getInt("stdid"));
-//                s_g.setGid(rs.getInt("gid"));
-//                session.setS_g(s_g);
                 
                 std.setId(rs.getInt("stdid"));
                 std.setName(rs.getString("stdname"));
@@ -86,9 +81,6 @@ public class AttandanceDBContext extends DBContext<Attandance> {
                 session.setIndex(rs.getInt("index"));
                 session.setAttandated(rs.getBoolean("attanded"));
 
-//                s_g.setStdid(rs.getInt("stdid"));
-//                s_g.setGid(rs.getInt("gid"));
-//                session.setS_g(s_g);
                 l.setId(rs.getInt("lid"));
                 l.setName(rs.getString("lname"));
                 session.setLecturer(l);
