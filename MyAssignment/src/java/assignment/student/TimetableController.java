@@ -15,8 +15,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
+import model.assignment.Account;
 import model.assignment.Attandance;
 import model.assignment.Session;
 import model.assignment.Student;
@@ -93,7 +95,12 @@ public class TimetableController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account ac = (Account) session.getAttribute("account");
+        boolean check = ac != null;
+        if (check) {
         processRequest(request, response);
+        } else response.getWriter().print("Access denied");
     } 
 
     /** 
@@ -106,7 +113,12 @@ public class TimetableController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Account ac = (Account) session.getAttribute("account");
+        boolean check = ac != null;
+        if (check) {
         processRequest(request, response);
+        } else response.getWriter().print("Access denied");
     }
 
     
