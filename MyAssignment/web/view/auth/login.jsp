@@ -36,20 +36,22 @@
 
 
     </body>
-    <style>
+    <style type="text/css">
         body{
             position:relative;
             height:650px;
             width:1325px;
             margin:auto;
-            
+            background-image: url(img/fpt.jpg);
+            background-size: cover;
+            background-repeat: no repeat;
         }
         form{
             position:absolute;
-            top:45%;
+            top:48%;
             height:50px;
             margin-top:-25px;
-            background:white;
+            
             padding:0 500px;
             width: 0;
             

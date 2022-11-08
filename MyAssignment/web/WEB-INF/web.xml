@@ -56,6 +56,10 @@
         <servlet-name>lecturetimetable</servlet-name>
         <servlet-class>assignment.lecturer.TimetableController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>takeattcontroll?</servlet-name>
+        <servlet-class>assignment.lecturer.AttController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListStudentController</servlet-name>
         <url-pattern>/student/list</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>lecturetimetable</servlet-name>
         <url-pattern>/lecture/timetable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>takeattcontroll?</servlet-name>
+        <url-pattern>/lecture/takeatt</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

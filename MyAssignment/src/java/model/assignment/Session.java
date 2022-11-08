@@ -23,6 +23,8 @@ public class Session {
     private ArrayList<Attandance> attandances = new ArrayList<>();
     private ArrayList<Student> students = new ArrayList<>();
     
+    
+    
 
     public int getId() {
         return id;
